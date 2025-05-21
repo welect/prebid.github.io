@@ -20,10 +20,10 @@ ortb_blocking_supported: false
 multiformat_supported: will-bid-on-one
 privacy_sandbox: none
 sidebarType: 1
-
 ---
 
 ### Note
+
 The Welect bidder adapter requires setup and approval from the Welect team. Please reach out to [dev@welect.de](mailto:dev@welect.de) for more information.
 
 ### Bid params
@@ -32,7 +32,8 @@ The Welect bidder adapter requires setup and approval from the Welect team. Plea
 | Name | Description | Example | Type |
 |---|---|---|---|
 | `placementId` | an identifier for your placement, provided by Welect | `'exampleID'` | `string` |
-| `domain` | The domain of your placement | `'www.example.com'` | `string` |
+| `cattax` | (optional) The content taxonomy used to describe the page's content. `'iab2'` and `'iab3'` for Context Taxonomies versions 2.x and 3.x by the IAB: [https://iabtechlab.com/standards/content-taxonomy/](https://iabtechlab.com/standards/content-taxonomy/) | `'iab2'` | `string` |
+| `cat` | (optional) The content categories describing the page's content. | `["1", "10"]` | `array of strings` |
 
 ### Example Ad Unit Setup
 
@@ -41,13 +42,12 @@ var adUnits = [
   {
     bidder: 'welect',
     params: {
-      placementId: 'exampleId',
-      domain: 'www.welect.de'
+      placementId: 'exampleId'
     },
-    sizes: [[640, 360]],
     mediaTypes: {
       video: {
-        context: 'instream'
+        context: 'instream',
+        playerSize: [640, 360]
       }
     },
   };
